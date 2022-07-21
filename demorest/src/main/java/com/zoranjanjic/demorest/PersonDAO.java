@@ -22,7 +22,6 @@ public class PersonDAO {
 		List<Person> personList = null;
 		Session session = null;
 
-		System.out.println("THE NUMBER IN DAO IS: " + number);
 
 		try {
 
@@ -60,6 +59,8 @@ public class PersonDAO {
 		
 		session.getTransaction().commit();
 		
+		session.close();
+		
 		
 	}
 
@@ -75,6 +76,8 @@ public class PersonDAO {
 		
 		session.getTransaction().commit();
 		
+		session.close();
+		
 	}
 
 	public void addPersonDB(Person person) {
@@ -87,6 +90,7 @@ public class PersonDAO {
 		
 		session.getTransaction().commit();
 		
+		session.close();
 	}
 
 }

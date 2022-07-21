@@ -28,6 +28,7 @@ public class Numbers {
 	public List getPersons(@QueryParam("query") String number) {
 		
 		List<Person> numbersList = service.getPersons(number);
+		
 		return numbersList;
 
 	}
