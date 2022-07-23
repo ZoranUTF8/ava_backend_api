@@ -12,27 +12,5 @@ public class PersonService {
 		return personList;
 	}
 
-	/* Add new person */
-
-	public void addPerson(Person person) {
-		DAO.addPersonDB(person);
-
-	}
-
-	/* Update person */
-
-	public void updatePerson(Person updatedPerson) {
-		DAO.updatePersonDB(updatedPerson);
-
-	}
-
-	/* Delete person with the matching number */
-
-	public void deleteBrand(String personName) {
-		DAO.deletePersonDB(personName);
-
-	}
-
-
 
 }

@@ -7,21 +7,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-
-
 public class PersonDAO {
 
-	SessionFactory factory = new Configuration()
-			.configure("hibernate.cfg.xml")
-			.addAnnotatedClass(Person.class)
+	SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Person.class)
 			.buildSessionFactory();
-	
 
 	public List<Person> getPersonsDB(String number) {
 
 		List<Person> personList = null;
 		Session session = null;
-
 
 		try {
 
@@ -32,10 +26,8 @@ public class PersonDAO {
 			Query query = session.createQuery("FROM persons WHERE phoneNumber LIKE :number").setMaxResults(10);
 
 			query.setParameter("number", "%" + number + "%");
-			
 
 			personList = query.getResultList();
-	
 
 		} catch (Exception e) {
 			System.out.println("Error in getPersonsDB " + e.getLocalizedMessage());
@@ -44,53 +36,6 @@ public class PersonDAO {
 		}
 
 		return personList;
-	}
-
-	public void updatePersonDB(Person updatedPerson) {
-		Session session = factory.getCurrentSession();
-		
-		session.beginTransaction();
-		
-		String personName = updatedPerson.getName();
-		
-		Person person = session.get(Person.class,personName);
-		
-		person = updatedPerson;
-		
-		session.getTransaction().commit();
-		
-		session.close();
-		
-		
-	}
-
-	public void deletePersonDB(String personName) {
-		
-		Session session = factory.getCurrentSession();
-		
-		session.beginTransaction();
-		
-		Person person = session.get(Person.class,personName);
-
-		session.delete(person);
-		
-		session.getTransaction().commit();
-		
-		session.close();
-		
-	}
-
-	public void addPersonDB(Person person) {
-		
-		Session session = factory.getCurrentSession();
-
-		session.beginTransaction();
-		
-		session.save(person);
-		
-		session.getTransaction().commit();
-		
-		session.close();
 	}
 
 }

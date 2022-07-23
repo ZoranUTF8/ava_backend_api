@@ -9,6 +9,7 @@ import jakarta.persistence.Table;
 @Entity(name = "persons")
 @Table(name = "persons")
 
+
 public class Person {
 
 	@Id
