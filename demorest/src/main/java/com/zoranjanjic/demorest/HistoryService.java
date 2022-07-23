@@ -1,23 +1,25 @@
 package com.zoranjanjic.demorest;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 public class HistoryService {
 
 	HistoryDAO DAO = new HistoryDAO();
 
-	/* Get person with the matching number */
-	public List<History> getHistoryByName(String personName) {
-		List<History> historyList = DAO.getHistoryDB(personName);
+	/* Get person history list with the matching number */
+	public List<History> getHistoryByNumber(String queryParam) {
+		
+		List<History> historyList = DAO.getHistoryDB(queryParam);
+		
 		return historyList;
 	}
 
-	public void saveHistoryToDb(String personName, String personNumber, String queryDate, String queryPath,
-			String queryTime, String queryParams) {
-		
-	
-		
-		DAO.saveToHistoryDB(personName, personNumber, queryDate, queryPath, queryTime, queryParams);
+	/* Add the query to the db*/
+	public void saveHistoryToDb(Date queryDate, String queryPath, Time queryTime, String queryParam) {
+
+		DAO.saveToHistoryDB(queryDate, queryPath, queryTime, queryParam);
 	}
 
 }

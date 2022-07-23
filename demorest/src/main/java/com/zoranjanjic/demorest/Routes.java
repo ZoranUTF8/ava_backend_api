@@ -34,7 +34,7 @@ public class Routes {
 
 	}
 
-	/* Add a new person to the database */
+	/* Get all query with with the matchin number */
 
 	@GET
 	@Path("/autocomplete/history")
@@ -42,10 +42,9 @@ public class Routes {
 
 	public List getHistory(@QueryParam("query") String query) {
 
-		List<History> historyListByName = historyService.getHistoryByName(query);
+		List<History> historyListByName = historyService.getHistoryByNumber(query);
 
 		return historyListByName;
 
 	}
 }
-
